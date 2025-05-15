@@ -23,16 +23,13 @@ node .
 ## Advanced local setup with kubernetes
 * install kubernetes
 * deploy app with `kubectl apply -f deploy`
-* check the assigned NodePort for the service `kubectl get svc testwebapp`
-* find out node port `kubectl get svc` the port will be the second port
+* check the ip and port of the app `kubectl get services -n team1`. The ip will be ExternalIP and the port will be second one in Port column
 * connect to the app
-  * find out NodePort ip `kubectl get nodes -o wide`
   * connect to url `http://<node-ip>:<node-port>`
-  * (optional) or forward the NodePort port `kubectl port-forward svc/testwebapp <nodeport>:8080` and connect with `http://localhost:<node-port>`
 * uninstall app with `kubectl delete -f deploy`
 
 ## Building docker image
-
+For local testing you might just want to build and run image without any kubernetes.
 * build image `docker build -t test-app .`
 * run image `docker run -p 8080:8080 -d test-app`
 * check if it is running by `docker ps`

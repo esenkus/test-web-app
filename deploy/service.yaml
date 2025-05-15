@@ -6,8 +6,11 @@ metadata:
 spec:
   selector:
     app: testwebapp
+    team: team1
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-  type: NodePort
+      nodePort: 30008
+  # will still use NodePort if LoadBalancer is not supported
+  type: LoadBalancer
