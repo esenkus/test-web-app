@@ -5,7 +5,7 @@ const getTest = () => {
             document.getElementById("result-text").textContent = res.message;
         },
         (err) => {
-            document.getElementById("result-text").textContent = res.message;
+            document.getElementById("result-text").textContent = err.message;
         },
     );
 };
