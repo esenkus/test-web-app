@@ -24,6 +24,6 @@ app.listen(PORT, () => {
     });
 
     app.get("/users", (req, res) => {
-        res.status(200).json({"message": "Users endpoint hit"});
+        res.status(200).json({"message": "Users endpoint hit!"});
     });
 });

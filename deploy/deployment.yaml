@@ -8,6 +8,7 @@ metadata:
     team: team1
 spec:
   replicas: 1
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: testwebapp
