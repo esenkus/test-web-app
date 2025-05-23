@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "tomcat"
+    },
+    {
+      "username": "secretFileManager",
+      "password": "s3cur3P@ssw0rd"
+    },
+    {
+      "username": "logManager",
+      "password": "2020"
+    }
+  ]
+}

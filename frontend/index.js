@@ -2,10 +2,10 @@ const getTest = () => {
     API.getUsers().then(
         (res) => {
             console.log(res);
-            document.getElementById("result-text").textContent = res.message;
+            document.getElementById("result-text").textContent = res;
         },
         (err) => {
-            document.getElementById("result-text").textContent = err.message;
+            document.getElementById("result-text").textContent = err;
         },
     );
 };
