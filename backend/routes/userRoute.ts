@@ -1,8 +1,18 @@
 import express from "express";
 import { userController } from "../controllers/userController";
 
-const router = express.Router();
+class UserRoute {
+  private readonly router: express.Router;
 
-router.get("/", userController.getUsers);
+  constructor() {
+    this.router = express.Router();
 
-export default router;
+    this.router.get("/", userController.getUsers);
+  }
+
+  public getRouter(): express.Router {
+    return this.router;
+  }
+}
+
+export const userRoute = new UserRoute().getRouter();

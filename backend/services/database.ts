@@ -19,9 +19,9 @@ class Database {
     }
   }
 
-  public get database(): JsonDB {
+  public getDatabase(): JsonDB {
     return this.db;
   }
 }
 
-export const database: JsonDB = new Database().database;
+export const database: JsonDB = new Database().getDatabase();

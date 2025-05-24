@@ -1,9 +1,19 @@
 import express from "express";
 import { authController } from "../controllers/authController";
 
-const router = express.Router();
+class AuthRoute {
+  private readonly router: express.Router;
 
-router.post("/login", authController.login);
-router.post("/register", authController.register);
+  constructor() {
+    this.router = express.Router();
 
-export default router;
+    this.router.post("/login", authController.login);
+    this.router.post("/register", authController.register);
+  }
+
+  public getRouter(): express.Router {
+    return this.router;
+  }
+}
+
+export const authRoute = new AuthRoute().getRouter();

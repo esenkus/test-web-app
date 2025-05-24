@@ -9,31 +9,37 @@
     {
       "name": "Android App Protection",
       "version": "6.3.0",
-      "description": "Make your Android app more secure with advanced protection techniques."
+      "description": "Make your Android app more secure with advanced protection techniques.",
+      "price": 99.99
     },
     {
       "name": "Web Application Security",
       "version": "7.9.0",
-      "description": "Secure your web applications against common vulnerabilities and threats."
+      "description": "Secure your web applications against common vulnerabilities and threats.",
+      "price": 199.99
     },
     {
       "name": "Key & Data Protection",
-      "description": "Protect sensitive keys and data with robust encryption and management solutions."
+      "description": "Protect sensitive keys and data with robust encryption and management solutions.",
+      "price": 299.99
     },
     {
       "name": "Agility",
       "version": "9.9.9",
-      "description": "Enhance your development agility with tools that streamline processes and improve efficiency."
+      "description": "Enhance your development agility with tools that streamline processes and improve efficiency.",
+      "price": 49.99
     },
     {
       "name": "Release",
       "version": "25.3.0",
-      "description": "Manage your software releases effectively with comprehensive tools and strategies."
+      "description": "Manage your software releases effectively with comprehensive tools and strategies.",
+      "price": 149.99
     },
     {
       "name": "Deploy",
       "version": "25.3.0",
-      "description": "Automate your deployment processes to ensure smooth and reliable software delivery."
+      "description": "Automate your deployment processes to ensure smooth and reliable software delivery.",
+      "price": 199.99
     }
   ]
 }
