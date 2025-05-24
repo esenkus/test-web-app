@@ -2,7 +2,7 @@ import { JsonDB, Config } from "node-json-db";
 import fs from "fs";
 
 class Database {
-  private db: JsonDB;
+  private readonly db: JsonDB;
   private static readonly TEMPLATE_DB_PATH = "./services/database.initial.json";
   private static readonly WORKING_DB_PATH = "./services/database.working.json";
 
