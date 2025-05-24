@@ -10,7 +10,7 @@ class AuthController {
       (users: User[]) => {
         const user = users.find(
           (user: User) =>
-            user.username === username && user.password === password,
+            user.username === username && user.password === password
         );
         if (!user) {
           res.status(401).json("Bad username or password");
@@ -21,7 +21,7 @@ class AuthController {
       },
       (error) => {
         res.status(500).json({ error: "Failed to fetch users " + error });
-      },
+      }
     );
   }
 
@@ -30,25 +30,37 @@ class AuthController {
     database.getData("/users").then(
       (users: User[]) => {
         const userExists = users.find(
-          (user: User) => user.username === username,
+          (user: User) => user.username === username
         );
         if (userExists) {
           res.status(409).json("User already exists");
           return;
         }
-        const newUser: User = { username: username, password: password };
+
+        const usersArray = Array.isArray(users) ? users : [];
+        const newId =
+          usersArray.length > 0
+            ? Math.max(...usersArray.map((user) => user.id)) + 1
+            : 1;
+
+        const newUser: User = {
+          id: newId,
+          username: username,
+          password: password,
+        };
+
         database.push("/users[]", newUser).then(
           (_) => {
             res.status(201).json("User created");
           },
           (error) => {
             res.status(500).json({ error: "Failed to create user " + error });
-          },
+          }
         );
       },
       (error) => {
         res.status(500).json({ error: "Failed to fetch users " + error });
-      },
+      }
     );
   }
 }

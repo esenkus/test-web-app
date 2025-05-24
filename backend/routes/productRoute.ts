@@ -8,6 +8,7 @@ class ProductRoute {
     this.router = express.Router();
 
     this.router.get("/", productController.getProducts);
+    this.router.get("/:id", productController.getProductById);
   }
 
   public getRouter(): express.Router {

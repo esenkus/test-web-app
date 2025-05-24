@@ -1,41 +1,52 @@
 {
   "users": [
     {
+      "id": 1,
       "username": "admin",
       "password": "admin"
     }
   ],
+  "basketItems": [],
+  "reviews": [],
+  "purchases": [],
   "products": [
     {
+      "id": 1,
       "name": "Android App Protection",
       "version": "6.3.0",
       "description": "Make your Android app more secure with advanced protection techniques.",
       "price": 99.99
     },
     {
+      "id": 2,
       "name": "Web Application Security",
       "version": "7.9.0",
       "description": "Secure your web applications against common vulnerabilities and threats.",
       "price": 199.99
     },
     {
+      "id": 3,
       "name": "Key & Data Protection",
+      "version": "7.0.0",
       "description": "Protect sensitive keys and data with robust encryption and management solutions.",
       "price": 299.99
     },
     {
+      "id": 4,
       "name": "Agility",
       "version": "9.9.9",
       "description": "Enhance your development agility with tools that streamline processes and improve efficiency.",
       "price": 49.99
     },
     {
+      "id": 5,
       "name": "Release",
       "version": "25.3.0",
       "description": "Manage your software releases effectively with comprehensive tools and strategies.",
       "price": 149.99
     },
     {
+      "id": 6,
       "name": "Deploy",
       "version": "25.3.0",
       "description": "Automate your deployment processes to ensure smooth and reliable software delivery.",
