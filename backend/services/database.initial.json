@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin"
+    }
+  ],
+  "products": [
+    {
+      "name": "Android App Protection",
+      "version": "6.3.0",
+      "description": "Make your Android app more secure with advanced protection techniques."
+    },
+    {
+      "name": "Web Application Security",
+      "version": "7.9.0",
+      "description": "Secure your web applications against common vulnerabilities and threats."
+    },
+    {
+      "name": "Key & Data Protection",
+      "description": "Protect sensitive keys and data with robust encryption and management solutions."
+    },
+    {
+      "name": "Agility",
+      "version": "9.9.9",
+      "description": "Enhance your development agility with tools that streamline processes and improve efficiency."
+    },
+    {
+      "name": "Release",
+      "version": "25.3.0",
+      "description": "Manage your software releases effectively with comprehensive tools and strategies."
+    },
+    {
+      "name": "Deploy",
+      "version": "25.3.0",
+      "description": "Automate your deployment processes to ensure smooth and reliable software delivery."
+    }
+  ]
+}

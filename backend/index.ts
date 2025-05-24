@@ -1,23 +1,33 @@
-import express, {Request, Response, NextFunction} from "express";
+import express, { Request, Response, NextFunction } from "express";
 import path from "path";
-import userRoutes from "./routes/userRoutes";
+import userRoute from "./routes/userRoute";
+import authRoute from "./routes/authRoute";
+import cors, { CorsOptions } from "cors";
 
 const app = express();
 const PORT = 8080;
 
 app.use(express.static(path.join(__dirname, "../../frontend")));
-app.use(express.urlencoded({extended: true}));
+
+const corsOptions: CorsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // global request logger, remove in production
 app.use((req: Request, res: Response, next: NextFunction) => {
-    const log = `${new Date().toISOString()} - ${req.method} ${req.url}`;
-    console.log(log);
-    next();
+  const log = `${new Date().toISOString()} - ${req.method} ${req.url}`;
+  console.log(log);
+  next();
 });
 
-app.use("/users", userRoutes);
+app.use("/users", userRoute);
+app.use("/auth", authRoute);
 
 app.listen(PORT, () => {
-    console.log("Up and running!");
+  console.log("Up and running!");
 });
