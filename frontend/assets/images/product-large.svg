@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="400" fill="#f0f0f0"/>
+  <text x="50%" y="40%" font-family="Arial, sans-serif" font-size="32" 
+        text-anchor="middle" dominant-baseline="middle" fill="#00AB55">
+    Digital.ai
+  </text>
+  <text x="50%" y="55%" font-family="Arial, sans-serif" font-size="24" 
+        text-anchor="middle" dominant-baseline="middle" fill="#999999">
+    Product Image
+  </text>
+</svg>

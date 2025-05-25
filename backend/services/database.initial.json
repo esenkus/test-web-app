@@ -15,42 +15,64 @@
       "name": "Android App Protection",
       "version": "6.3.0",
       "description": "Make your Android app more secure with advanced protection techniques.",
-      "price": 99.99
+      "price": 99.99,
+      "imagePath": "/assets/images/Digital.ai_App_Security_Logo.svg"
     },
     {
       "id": 2,
       "name": "Web Application Security",
       "version": "7.9.0",
       "description": "Secure your web applications against common vulnerabilities and threats.",
-      "price": 199.99
+      "price": 199.99,
+      "imagePath": "/assets/images/Digital.ai_App_Security_Logo.svg"
     },
     {
       "id": 3,
       "name": "Key & Data Protection",
       "version": "7.0.0",
       "description": "Protect sensitive keys and data with robust encryption and management solutions.",
-      "price": 299.99
+      "price": 299.99,
+      "imagePath": "/assets/images/placeholder.svg"
     },
     {
       "id": 4,
       "name": "Agility",
       "version": "9.9.9",
       "description": "Enhance your development agility with tools that streamline processes and improve efficiency.",
-      "price": 49.99
+      "price": 49.99,
+      "imagePath": "/assets/images/agility-logo-fc-dark.svg"
     },
     {
       "id": 5,
       "name": "Release",
       "version": "25.3.0",
       "description": "Manage your software releases effectively with comprehensive tools and strategies.",
-      "price": 149.99
+      "price": 149.99,
+      "imagePath": "/assets/images/release-logo-no-echo-fc-dark.svg"
     },
     {
       "id": 6,
       "name": "Deploy",
       "version": "25.3.0",
       "description": "Automate your deployment processes to ensure smooth and reliable software delivery.",
-      "price": 199.99
+      "price": 199.99,
+      "imagePath": "/assets/images/deploy-logo-no-echo-fc-dark.svg"
+    },
+    {
+      "id": 7,
+      "name": "Continuous Testing",
+      "version": "1.2.2",
+      "description": "Implement continuous testing practices to ensure high-quality software throughout the development lifecycle.",
+      "price": 79.99,
+      "imagePath": "/assets/images/continuous-testing-logo-no-echo-fc-dark.svg"
+    },
+    {
+      "id": 8,
+      "name": "App Aware",
+      "version": "1.0.0",
+      "description": "Gain insights into your applications with advanced monitoring and analytics tools.",
+      "price": 89.99,
+      "imagePath": "/assets/images/app-aware-logo-no-echo-fc-dark.svg"
     }
   ]
 }

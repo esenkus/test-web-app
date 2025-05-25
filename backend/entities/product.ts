@@ -4,4 +4,5 @@ export interface Product {
   version: string;
   description: string;
   price: number;
+  imagePath?: string; // Optional to maintain backward compatibility
 }

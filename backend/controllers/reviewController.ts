@@ -20,12 +20,17 @@ class ReviewController {
       },
       (error: string) => {
         res.status(500).json({ error: "Failed to fetch reviews " + error });
-      },
+      }
     );
   }
 
   public addReview(req: Request, res: Response) {
-    const username = req.body.user.username;
+    const username = req.user?.username;
+
+    if (!username) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+
     const productId = parseInt(req.params.productId);
     const { rating, comment } = req.body;
 
@@ -75,7 +80,7 @@ class ReviewController {
           },
           (error: string) => {
             res.status(500).json({ error: "Failed to save review " + error });
-          },
+          }
         );
       },
       (error: string) => {
@@ -106,9 +111,9 @@ class ReviewController {
             },
             (error: string) => {
               res.status(500).json({ error: "Failed to save review " + error });
-            },
+            }
           );
-      },
+      }
     );
   }
 }

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail - Digital.ai Shop</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/products.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="../index.html" class="logo">
+          <span>Digital.ai Shop</span>
+        </a>
+
+        <nav>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="products.html" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="about.html" class="nav-link">About</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="user-actions">
+          <a href="cart.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <div class="auth-buttons">
+            <!-- Will be populated via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a> &gt;
+        <a href="products.html">Products</a> &gt;
+        <span id="product-breadcrumb-name">Product Detail</span>
+      </div>
+
+      <div id="product-loading" class="loading">Loading product details...</div>
+
+      <!-- Product Detail -->
+      <div class="product-detail" id="product-detail" style="display: none">
+        <div class="product-detail-image">
+          <img id="product-image" src="" alt="Product Image" />
+        </div>
+
+        <div class="product-detail-content">
+          <h1 class="product-detail-title" id="product-title"></h1>
+          <p class="product-detail-version" id="product-version"></p>
+          <p class="product-detail-price" id="product-price"></p>
+          <div
+            class="product-detail-description"
+            id="product-description"
+          ></div>
+
+          <div class="quantity-selector">
+            <button class="quantity-btn" id="decrease-quantity">-</button>
+            <input
+              type="number"
+              class="quantity-input"
+              id="quantity"
+              value="1"
+              min="1"
+              max="10"
+            />
+            <button class="quantity-btn" id="increase-quantity">+</button>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-primary" id="add-to-cart-btn">
+              <i class="fas fa-shopping-cart"></i>
+              Add to Cart
+            </button>
+            <button class="btn btn-outline" id="back-to-products">
+              <i class="fas fa-arrow-left"></i>
+              Back to Products
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error message -->
+      <div id="product-error" class="error-container" style="display: none">
+        <h2>Product Not Found</h2>
+        <p>Sorry, the product you're looking for is not available.</p>
+        <a href="products.html" class="btn btn-primary">Browse All Products</a>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-container">
+        <div class="footer-section">
+          <h3>About Digital.ai</h3>
+          <p>
+            Digital.ai is a leading provider of digital transformation solutions
+            that help organizations drive innovation and growth.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" class="footer-link">Home</a></li>
+            <li><a href="products.html" class="footer-link">Products</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Customer Service</h3>
+          <ul class="footer-links">
+            <li><a href="faq.html" class="footer-link">FAQ</a></li>
+            <li><a href="shipping.html" class="footer-link">Shipping</a></li>
+            <li><a href="returns.html" class="footer-link">Returns</a></li>
+            <li>
+              <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:info@digital.ai" class="footer-link"
+                >Email: info@digital.ai</a
+              >
+            </li>
+            <li>
+              <a href="tel:+11234567890" class="footer-link"
+                >Phone: +1 (123) 456-7890</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          &copy; 2025 Digital.ai Shop. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="../js/product-detail.js"></script>
+  </body>
+</html>

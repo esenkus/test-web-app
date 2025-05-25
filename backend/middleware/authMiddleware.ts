@@ -1,10 +1,22 @@
 import { Request, Response, NextFunction } from "express";
 import { jwtService } from "../services/jwt";
 
+// Extend Express Request to include the user property
+declare global {
+  namespace Express {
+    interface Request {
+      user?: {
+        username: string;
+        permissions: string[];
+      };
+    }
+  }
+}
+
 export const authenticate = (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   const authHeader = req.headers.authorization;
 
@@ -23,7 +35,9 @@ export const authenticate = (
   }
 
   const payload = jwtService.decodeJwt(token);
-  req.body.user = {
+
+  // Set user on request object (not in body)
+  req.user = {
     username: payload.sub as string,
     permissions: payload.permissions as string[],
   };

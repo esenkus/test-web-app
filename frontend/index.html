@@ -1,22 +1,192 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta charset="UTF-8"/>
-    <title>Test-web-app</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital.ai Product Shop</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/products.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-</head>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <span>Digital.ai Shop</span>
+        </a>
 
-<body>
-<div>
-    <p>Greetings!!!</p>
-    <p>More text</p>
-    <p>CTF summer 2025</p>
-    <button onclick="getTest()">Test back-end call</button>
-    <h3 id="result-text"></h3>
-</div>
+        <nav>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/products.html" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/about.html" class="nav-link">About</a>
+            </li>
+          </ul>
+        </nav>
 
-<script src="api.js"></script>
-<script src="index.js"></script>
-</body>
+        <div class="user-actions">
+          <a href="pages/cart.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <div class="auth-buttons">
+            <!-- Will be populated via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Welcome to Digital.ai Shop</h1>
+          <p>
+            Your destination for innovative digital products that transform the
+            way you work
+          </p>
+          <a href="pages/products.html" class="btn btn-primary"
+            >Explore Products</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+      <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-container" id="featured-products">
+          <!-- Products will be loaded here via JavaScript -->
+          <div class="loading">Loading products...</div>
+        </div>
+        <div class="text-center">
+          <a href="pages/products.html" class="btn btn-outline"
+            >View All Products</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+      <div class="container">
+        <h2 class="section-title">Why Choose Digital.ai?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Security First</h3>
+            <p>
+              Our products are built with security in mind from the ground up
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Quality Code</h3>
+            <p>
+              Meticulously crafted code for reliable and scalable applications
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>Seamless Integration</h3>
+            <p>Easy integration with your existing systems and workflows</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Our team is always available to help you with any issues</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-container">
+        <div class="footer-section">
+          <h3>About Digital.ai</h3>
+          <p>
+            Digital.ai is a leading provider of digital transformation solutions
+            that help organizations drive innovation and growth.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li>
+              <a href="pages/products.html" class="footer-link">Products</a>
+            </li>
+            <li><a href="pages/about.html" class="footer-link">About</a></li>
+            <li>
+              <a href="pages/contact.html" class="footer-link">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Customer Service</h3>
+          <ul class="footer-links">
+            <li><a href="pages/faq.html" class="footer-link">FAQ</a></li>
+            <li>
+              <a href="pages/shipping.html" class="footer-link">Shipping</a>
+            </li>
+            <li>
+              <a href="pages/returns.html" class="footer-link">Returns</a>
+            </li>
+            <li>
+              <a href="pages/privacy.html" class="footer-link"
+                >Privacy Policy</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:info@digital.ai" class="footer-link"
+                >Email: info@digital.ai</a
+              >
+            </li>
+            <li>
+              <a href="tel:+11234567890" class="footer-link"
+                >Phone: +1 (123) 456-7890</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <div class="copyright">
+          &copy; 2025 Digital.ai Shop. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/index.js"></script>
+  </body>
 </html>

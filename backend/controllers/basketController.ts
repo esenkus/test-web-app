@@ -5,7 +5,11 @@ import { BasketItem } from "../entities/basket";
 
 class BasketController {
   public getBasket(req: Request, res: Response) {
-    const username = req.body.user.username;
+    const username = req.user?.username;
+
+    if (!username) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
 
     database.getData("/users").then(
       (users: User[]) => {
@@ -27,17 +31,21 @@ class BasketController {
             res
               .status(500)
               .json({ error: "Failed to fetch user basket " + error });
-          },
+          }
         );
       },
       (error: string) => {
         res.status(500).json({ error: "Failed to fetch user data " + error });
-      },
+      }
     );
   }
 
   public addToBasket(req: Request, res: Response) {
-    const username = req.body.user.username;
+    const username = req.user?.username;
+
+    if (!username) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
     const { productId, quantity } = req.body;
 
     if (!productId || isNaN(parseInt(productId))) {
@@ -80,7 +88,7 @@ class BasketController {
 
                 const existingItem = userBasketItems.find(
                   (item) =>
-                    item.userId === user.id && item.productId === productIdNum,
+                    item.userId === user.id && item.productId === productIdNum
                 );
 
                 if (existingItem) {
@@ -97,7 +105,7 @@ class BasketController {
                       res
                         .status(500)
                         .json({ error: "Failed to update basket " + error });
-                    },
+                    }
                   );
                 } else {
                   const newId =
@@ -125,7 +133,7 @@ class BasketController {
                       res
                         .status(500)
                         .json({ error: "Failed to update basket " + error });
-                    },
+                    }
                   );
                 }
               },
@@ -133,26 +141,30 @@ class BasketController {
                 res
                   .status(500)
                   .json({ error: "Failed to fetch basket items " + error });
-              },
+              }
             );
           },
           (error: string) => {
             res
               .status(500)
               .json({ error: "Failed to fetch user data " + error });
-          },
+          }
         );
       },
       (error: string) => {
         res
           .status(500)
           .json({ error: "Failed to check product existence " + error });
-      },
+      }
     );
   }
 
   public removeFromBasket(req: Request, res: Response) {
-    const username = req.body.user.username;
+    const username = req.user?.username;
+
+    if (!username) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
     const productId = parseInt(req.params.id);
 
     if (isNaN(productId)) {
@@ -174,7 +186,7 @@ class BasketController {
               : [];
 
             const itemIndex = userBasketItems.findIndex(
-              (item) => item.userId === user.id && item.productId === productId,
+              (item) => item.userId === user.id && item.productId === productId
             );
 
             if (itemIndex === -1) {
@@ -191,24 +203,28 @@ class BasketController {
                 res
                   .status(500)
                   .json({ error: "Failed to update basket " + error });
-              },
+              }
             );
           },
           (error: string) => {
             res
               .status(500)
               .json({ error: "Failed to fetch basket items " + error });
-          },
+          }
         );
       },
       (error: string) => {
         res.status(500).json({ error: "Failed to fetch user data " + error });
-      },
+      }
     );
   }
 
   public updateBasketItem(req: Request, res: Response) {
-    const username = req.body.user.username;
+    const username = req.user?.username;
+
+    if (!username) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
     const productId = parseInt(req.params.id);
     const { quantity } = req.body;
 
@@ -239,7 +255,7 @@ class BasketController {
               : [];
 
             const itemIndex = userBasketItems.findIndex(
-              (item) => item.userId === user.id && item.productId === productId,
+              (item) => item.userId === user.id && item.productId === productId
             );
 
             if (itemIndex === -1) {
@@ -259,19 +275,19 @@ class BasketController {
                 res
                   .status(500)
                   .json({ error: "Failed to update basket " + error });
-              },
+              }
             );
           },
           (error: string) => {
             res
               .status(500)
               .json({ error: "Failed to fetch basket items " + error });
-          },
+          }
         );
       },
       (error: string) => {
         res.status(500).json({ error: "Failed to fetch user data " + error });
-      },
+      }
     );
   }
 }

@@ -11,7 +11,18 @@ import { reviewRoute } from "./routes/reviewRoute";
 const app = express();
 const PORT = 8080;
 
-app.use(express.static(path.join(__dirname, "../../frontend")));
+// Express static middleware with proper MIME types
+app.use(
+  express.static(path.join(__dirname, "../../frontend"), {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith(".css")) {
+        res.setHeader("Content-Type", "text/css");
+      } else if (filePath.endsWith(".js")) {
+        res.setHeader("Content-Type", "application/javascript");
+      }
+    },
+  })
+);
 
 const corsOptions: CorsOptions = {
   origin: "*",

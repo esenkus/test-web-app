@@ -1,71 +1,93 @@
-// Main index.js for homepage
-import API from "./js/api.js";
-import Utils from "./js/utils.js";
+// Main JavaScript file for the index page
+import API from "./api.js";
+import Utils from "./utils.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize UI
+document.addEventListener("DOMContentLoaded", async () => {
+  // Initialize the UI
   Utils.updateAuthUI();
 
-  // Load products
-  loadFeaturedProducts();
+  // Load featured products
+  await loadFeaturedProducts();
 
-  // Setup event listeners
+  // Set up event listeners
   setupEventListeners();
 
   // Update cart count if user is logged in
   if (API.isAuthenticated()) {
     try {
-      API.getBasket()
-        .then((basket) => {
-          let itemCount = 0;
-          if (Array.isArray(basket)) {
-            itemCount = basket.reduce(
-              (total, item) => total + item.quantity,
-              0
-            );
-          }
-          Utils.updateCartCount(itemCount);
-        })
-        .catch((error) => {
-          console.error("Error loading basket:", error);
-        });
+      const basket = await API.getBasket();
+      let itemCount = 0;
+      if (Array.isArray(basket)) {
+        itemCount = basket.reduce((total, item) => total + item.quantity, 0);
+      }
+      Utils.updateCartCount(itemCount);
     } catch (error) {
-      console.error("Error checking authentication status:", error);
+      console.error("Error loading basket:", error);
     }
   }
 });
 
-// Load featured products on the homepage
+// Load featured products for the homepage
 async function loadFeaturedProducts() {
   const featuredContainer = document.getElementById("featured-products");
+
+  if (!featuredContainer) return;
 
   try {
     const products = await API.getProducts();
 
-    if (featuredContainer) {
-      // Clear loading message
-      featuredContainer.innerHTML = "";
+    // Clear loading message
+    featuredContainer.innerHTML = "";
 
-      // Display only first 4 products as featured
-      const featuredProducts = products.slice(0, 4);
+    // Display only first 4 products as featured
+    const featuredProducts = products.slice(0, 4);
 
-      if (featuredProducts.length === 0) {
-        featuredContainer.innerHTML =
-          '<p class="no-products">No products available at the moment.</p>';
-        return;
-      }
-
-      featuredProducts.forEach((product) => {
-        const productCard = createProductCard(product);
-        featuredContainer.appendChild(productCard);
-      });
+    if (featuredProducts.length === 0) {
+      featuredContainer.innerHTML =
+        '<p class="no-products">No products available at the moment.</p>';
+      return;
     }
+
+    featuredProducts.forEach((product) => {
+      const productCard = createProductCard(product);
+      featuredContainer.appendChild(productCard);
+    });
   } catch (error) {
     console.error("Error loading featured products:", error);
     if (featuredContainer) {
       featuredContainer.innerHTML =
         '<p class="error">Failed to load products. Please try again later.</p>';
     }
+  }
+}
+
+// Get the appropriate image for a product
+function getProductImage(product) {
+  // Use the imagePath from the product if available
+  if (product.imagePath) {
+    // Remove leading slash if present
+    return product.imagePath.startsWith("/")
+      ? product.imagePath.substring(1)
+      : product.imagePath;
+  }
+
+  // Fallback to the old method if imagePath is not available (for backward compatibility)
+  switch (product.id) {
+    case 1: // Android App Protection
+    case 2: // Web Application Security
+      return "assets/images/Digital.ai_App_Security_Logo.svg";
+    case 4: // Agility
+      return "assets/images/agility-logo-fc-dark.svg";
+    case 5: // Release
+      return "assets/images/release-logo-no-echo-fc-dark.svg";
+    case 6: // Deploy
+      return "assets/images/deploy-logo-no-echo-fc-dark.svg";
+    case 7: // Continuous Testing
+      return "assets/images/continuous-testing-logo-no-echo-fc-dark.svg";
+    case 8: // App Aware
+      return "assets/images/app-aware-logo-no-echo-fc-dark.svg";
+    default:
+      return "assets/images/placeholder.svg";
   }
 }
 
@@ -76,9 +98,7 @@ function createProductCard(product) {
 
   card.innerHTML = `
         <div class="product-image">
-            <img src="https://via.placeholder.com/300x200?text=${
-              product.name
-            }" alt="${product.name}">
+            <img src="${getProductImage(product)}" alt="${product.name}">
         </div>
         <div class="product-content">
             <h3 class="product-title">${product.name}</h3>

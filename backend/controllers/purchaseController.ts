@@ -6,7 +6,12 @@ import { Purchase, PurchaseItem } from "../entities/purchase";
 
 class PurchaseController {
   public purchase(req: Request, res: Response) {
-    const username = req.body.user.username;
+    const username = req.user?.username;
+
+    if (!username) {
+      return res.status(401).json({ error: "Not authenticated" });
+    }
+
     const { productPrices } = req.body; // Receive prices from frontend
 
     if (!productPrices || typeof productPrices !== "object") {
@@ -57,7 +62,7 @@ class PurchaseController {
                       quantity: item.quantity,
                       price: price,
                     };
-                  },
+                  }
                 );
 
                 const purchase: Purchase = {
@@ -73,7 +78,7 @@ class PurchaseController {
                 database.push("/purchases", purchasesArray).then(
                   () => {
                     const remainingBasketItems = basketItems.filter(
-                      (item) => item.userId !== user.id,
+                      (item) => item.userId !== user.id
                     );
 
                     database.push("/basketItems", remainingBasketItems).then(
@@ -87,14 +92,14 @@ class PurchaseController {
                         res.status(500).json({
                           error: "Failed to clear basket " + error,
                         });
-                      },
+                      }
                     );
                   },
                   (error: string) => {
                     res
                       .status(500)
                       .json({ error: "Failed to save purchase " + error });
-                  },
+                  }
                 );
               },
               (error: string) => {
@@ -108,7 +113,7 @@ class PurchaseController {
                       quantity: item.quantity,
                       price: price,
                     };
-                  },
+                  }
                 );
 
                 const purchase: Purchase = {
@@ -122,7 +127,7 @@ class PurchaseController {
                 database.push("/purchases", [purchase]).then(
                   () => {
                     const remainingBasketItems = basketItems.filter(
-                      (item) => item.userId !== user.id,
+                      (item) => item.userId !== user.id
                     );
 
                     database.push("/basketItems", remainingBasketItems).then(
@@ -136,28 +141,28 @@ class PurchaseController {
                         res.status(500).json({
                           error: "Failed to clear basket " + error,
                         });
-                      },
+                      }
                     );
                   },
                   (error: string) => {
                     res
                       .status(500)
                       .json({ error: "Failed to save purchase " + error });
-                  },
+                  }
                 );
-              },
+              }
             );
           },
           (error: string) => {
             res
               .status(500)
               .json({ error: "Failed to fetch basket items " + error });
-          },
+          }
         );
       },
       (error: string) => {
         res.status(500).json({ error: "Failed to fetch user data " + error });
-      },
+      }
     );
   }
 }
