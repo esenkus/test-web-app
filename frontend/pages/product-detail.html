@@ -14,6 +14,7 @@
     />
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/products.css" />
+    <link rel="stylesheet" href="../css/reviews.css" />
   </head>
   <body>
     <!-- Header -->
@@ -97,6 +98,62 @@
               Back to Products
             </button>
           </div>
+        </div>
+      </div>
+
+      <!-- Product Reviews Section -->
+      <div class="reviews-section" id="reviews-section" style="display: none">
+        <h2>Customer Reviews</h2>
+        <div id="reviews-container">
+          <div id="reviews-loading" class="loading">Loading reviews...</div>
+          <div id="reviews-list"></div>
+          <div id="no-reviews" style="display: none">
+            <p>No reviews yet. Be the first to leave a review!</p>
+          </div>
+        </div>
+
+        <div id="add-review-section" style="display: none">
+          <h3>Write a Review</h3>
+          <form id="review-form">
+            <div class="form-group">
+              <label for="review-rating">Rating</label>
+              <div class="rating-selector">
+                <div class="star-rating">
+                  <i class="far fa-star" data-rating="1"></i>
+                  <i class="far fa-star" data-rating="2"></i>
+                  <i class="far fa-star" data-rating="3"></i>
+                  <i class="far fa-star" data-rating="4"></i>
+                  <i class="far fa-star" data-rating="5"></i>
+                </div>
+                <input type="hidden" id="review-rating" value="5" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="review-comment">Comment</label>
+              <textarea
+                id="review-comment"
+                required
+                rows="4"
+                placeholder="Share your thoughts about this product"
+              ></textarea>
+            </div>
+            <div
+              class="form-error"
+              id="review-error"
+              style="display: none"
+            ></div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="submit-review-btn"
+            >
+              Submit Review
+            </button>
+          </form>
+        </div>
+
+        <div id="login-to-review" style="display: none">
+          <p>Please <a href="login.html">login</a> to write a review.</p>
         </div>
       </div>
 

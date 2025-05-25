@@ -185,6 +185,50 @@ const API = {
     }
   },
 
+  // Reviews endpoints
+  async getProductReviews(productId) {
+    try {
+      const response = await fetch(`${this.baseUrl}/reviews/${productId}`);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch reviews");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error(`Error fetching reviews for product ${productId}:`, error);
+      throw error;
+    }
+  },
+
+  async addProductReview(productId, rating, comment) {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        throw new Error("Not authenticated");
+      }
+
+      const response = await fetch(`${this.baseUrl}/reviews/${productId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ rating, comment }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add review");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error(`Error adding review for product ${productId}:`, error);
+      throw error;
+    }
+  },
+
   // User authentication helpers
   isAuthenticated() {
     return localStorage.getItem("token") !== null;
