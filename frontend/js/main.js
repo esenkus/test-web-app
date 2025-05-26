@@ -1,11 +1,12 @@
 // Main JavaScript file for all pages
 import API from "./api.js";
 import Utils from "./utils.js";
+import Components from "./components.js";
 
 // Initialize authentication UI on every page
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize authentication UI
-  Utils.updateAuthUI();
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load header and footer components
+  await Components.loadComponents();
 
   // Update cart count if authenticated
   if (API.isAuthenticated()) {
@@ -24,4 +25,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Export for use in other scripts
-export { API, Utils };
+export { API, Utils, Components };

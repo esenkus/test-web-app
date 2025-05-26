@@ -1,10 +1,11 @@
 // About page script
-import API from "../js/api.js";
-import Utils from "../js/utils.js";
+import API from "./api.js";
+import Utils from "./utils.js";
+import Components from "./components.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Initialize the UI
-  Utils.updateAuthUI();
+  // Load components
+  await Components.loadComponents();
 
   // Update cart count if user is logged in
   if (API.isAuthenticated()) {

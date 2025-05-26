@@ -1,7 +1,11 @@
 // Product detail page script
-import { API, Utils } from "../js/main.js";
+import { API, Utils, Components } from "../js/main.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load components
+  await Components.loadComponents();
+
+  // Load product details
   loadProductDetails();
   setupEventListeners();
 

@@ -1,10 +1,11 @@
 // Main JavaScript file for the index page
 import API from "./api.js";
 import Utils from "./utils.js";
+import Components from "./components.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Initialize the UI
-  Utils.updateAuthUI();
+  // Load components
+  await Components.loadComponents();
 
   // Load featured products
   await loadFeaturedProducts();

@@ -1,10 +1,11 @@
 // Products page script
 import API from "./api.js";
 import Utils from "./utils.js";
+import Components from "./components.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize the UI
-  Utils.updateAuthUI();
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load components
+  await Components.loadComponents();
 
   // Load products
   loadProducts();

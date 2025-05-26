@@ -1,10 +1,9 @@
 // Profile page script
-import API from "../js/api.js";
-import Utils from "../js/utils.js";
+import { API, Utils, Components } from "../js/main.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize the UI
-  Utils.updateAuthUI();
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load components
+  await Components.loadComponents();
 
   // Check if user is authenticated
   if (!API.isAuthenticated()) {

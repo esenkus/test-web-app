@@ -1,7 +1,10 @@
 // Registration page script
-import { API, Utils } from "../js/main.js";
+import { API, Utils, Components } from "../js/main.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  // Load components
+  await Components.loadComponents();
+
   // If already logged in, redirect to homepage
   if (API.isAuthenticated()) {
     redirectAfterAuth();
